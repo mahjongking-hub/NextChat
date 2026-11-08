@@ -18,8 +18,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const path = request.nextUrl.pathname;
+  // The app framework (vinext) invokes "use server" functions by POSTing to
+  // the page path with a framework action header; without this allowance the
+  // chat send path blocks forever. Legacy /api/* proxy routes stay disabled
+  // regardless of headers.
+  const isFrameworkActionPost =
+    request.method === "POST" &&
+    (request.headers.has("next-action") || request.headers.has("x-rsc-action"));
   if ((path.startsWith("/api/") && !path.startsWith("/api/personal/") && path !== "/api/config") ||
-      (!path.startsWith("/api/personal/") && !["GET", "HEAD"].includes(request.method))) {
+      (!path.startsWith("/api/personal/") && !isFrameworkActionPost && !["GET", "HEAD"].includes(request.method))) {
     return NextResponse.json({ error: "Endpoint disabled" }, { status: 404 });
   }
   return NextResponse.next();
