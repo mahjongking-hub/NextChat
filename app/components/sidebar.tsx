@@ -3,15 +3,15 @@ import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
-import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import NextChatIcon from "../icons/logo.svg";
-import AddIcon from "../icons/add.svg";
-import DeleteIcon from "../icons/delete.svg";
-import MaskIcon from "../icons/mask.svg";
-import McpIcon from "../icons/mcp.svg";
-import DragIcon from "../icons/drag.svg";
-import DiscoveryIcon from "../icons/discovery.svg";
+import SettingsIcon from "../icons/settings.svg?react";
+import GithubIcon from "../icons/github.svg?react";
+import NextChatIcon from "../icons/logo.svg?react";
+import AddIcon from "../icons/add.svg?react";
+import DeleteIcon from "../icons/delete.svg?react";
+import MaskIcon from "../icons/mask.svg?react";
+import McpIcon from "../icons/mcp.svg?react";
+import DragIcon from "../icons/drag.svg?react";
+import DiscoveryIcon from "../icons/discovery.svg?react";
 
 import Locale from "../locales";
 

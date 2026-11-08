@@ -1,13 +1,13 @@
 import { IconButton } from "./button";
 import { ErrorBoundary } from "./error";
 import styles from "./mcp-market.module.scss";
-import EditIcon from "../icons/edit.svg";
-import AddIcon from "../icons/add.svg";
-import CloseIcon from "../icons/close.svg";
-import DeleteIcon from "../icons/delete.svg";
-import RestartIcon from "../icons/reload.svg";
-import EyeIcon from "../icons/eye.svg";
-import GithubIcon from "../icons/github.svg";
+import EditIcon from "../icons/edit.svg?react";
+import AddIcon from "../icons/add.svg?react";
+import CloseIcon from "../icons/close.svg?react";
+import DeleteIcon from "../icons/delete.svg?react";
+import RestartIcon from "../icons/reload.svg?react";
+import EyeIcon from "../icons/eye.svg?react";
+import GithubIcon from "../icons/github.svg?react";
 import { List, ListItem, Modal, showToast } from "./ui-lib";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -29,8 +29,8 @@ import {
   ServerStatusResponse,
 } from "../mcp/types";
 import clsx from "clsx";
-import PlayIcon from "../icons/play.svg";
-import StopIcon from "../icons/pause.svg";
+import PlayIcon from "../icons/play.svg?react";
+import StopIcon from "../icons/pause.svg?react";
 import { Path } from "../constant";
 import { useAccessStore } from "../store";
 

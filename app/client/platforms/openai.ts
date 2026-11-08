@@ -265,15 +265,19 @@ export class ChatGPTApi implements LLMApi {
       }
     }
 
-    console.log("[Request] openai payload: ", requestPayload);
+    if (!modelConfig.providerName || !/^[0-9a-f-]{36}$/i.test(modelConfig.providerName)) {
+      options.onError?.(new Error("Select a configured provider and model before chatting."));
+      return;
+    }
+    (requestPayload as any).providerId = modelConfig.providerName;
 
-    const shouldStream = !isDalle3 && !!options.config.stream;
+    const shouldStream = !isDalle3;
     const controller = new AbortController();
     options.onController?.(controller);
 
     try {
       let chatPath = "";
-      if (modelConfig.providerName === ServiceProvider.Azure) {
+      if (false && modelConfig.providerName === ServiceProvider.Azure) {
         // find model, and get displayName as deployName
         const { models: configModels, customModels: configCustomModels } =
           useAppConfig.getState();
@@ -299,9 +303,7 @@ export class ChatGPTApi implements LLMApi {
           ),
         );
       } else {
-        chatPath = this.path(
-          isDalle3 ? OpenaiPath.ImagePath : OpenaiPath.ChatPath,
-        );
+        chatPath = "/api/personal/chat";
       }
       if (shouldStream) {
         let index = -1;
@@ -314,7 +316,7 @@ export class ChatGPTApi implements LLMApi {
         streamWithThink(
           chatPath,
           requestPayload,
-          getHeaders(),
+          { "Content-Type": "application/json" },
           tools as any,
           funcs,
           controller,

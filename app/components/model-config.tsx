@@ -39,7 +39,7 @@ export function ModelConfigList(props: {
           }}
         >
           {Object.keys(groupModels).map((providerName, index) => (
-            <optgroup label={providerName} key={index}>
+            <optgroup label={groupModels[providerName][0]?.providerLabel ?? providerName} key={index}>
               {groupModels[providerName].map((v, i) => (
                 <option value={`${v.name}@${v.provider?.providerName}`} key={i}>
                   {v.displayName}

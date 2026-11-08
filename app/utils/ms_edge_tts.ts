@@ -345,7 +345,7 @@ export class MsEdgeTTS {
       });
 
       readable.on("end", () => {
-        resolve(Buffer.concat(data).buffer);
+        resolve(new Uint8Array(Buffer.concat(data)).buffer);
       });
 
       readable.on("error", (err) => {

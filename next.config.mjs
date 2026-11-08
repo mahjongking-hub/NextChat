@@ -26,7 +26,7 @@ const nextConfig = {
 
     return config;
   },
-  output: mode,
+  output: process.env.VINEXT_CLOUDFLARE ? undefined : mode,
   images: {
     unoptimized: mode === "export",
   },
@@ -52,7 +52,7 @@ const CorsHeaders = [
   },
 ];
 
-if (mode !== "export") {
+if (mode !== "export" && !process.env.VINEXT_CLOUDFLARE) {
   nextConfig.headers = async () => {
     return [
       {

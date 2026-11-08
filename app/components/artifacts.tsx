@@ -9,12 +9,12 @@ import {
 import { useParams } from "react-router";
 import { IconButton } from "./button";
 import { nanoid } from "nanoid";
-import ExportIcon from "../icons/share.svg";
-import CopyIcon from "../icons/copy.svg";
-import DownloadIcon from "../icons/download.svg";
-import GithubIcon from "../icons/github.svg";
-import LoadingButtonIcon from "../icons/loading.svg";
-import ReloadButtonIcon from "../icons/reload.svg";
+import ExportIcon from "../icons/share.svg?react";
+import CopyIcon from "../icons/copy.svg?react";
+import DownloadIcon from "../icons/download.svg?react";
+import GithubIcon from "../icons/github.svg?react";
+import LoadingButtonIcon from "../icons/loading.svg?react";
+import ReloadButtonIcon from "../icons/reload.svg?react";
 import Locale from "../locales";
 import { Modal, showToast } from "./ui-lib";
 import { copyToClipboard, downloadAs } from "../utils";

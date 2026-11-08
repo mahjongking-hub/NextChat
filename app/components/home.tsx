@@ -5,8 +5,8 @@ require("../polyfill");
 import { useEffect, useState } from "react";
 import styles from "./home.module.scss";
 
-import BotIcon from "../icons/nextchat-bot.svg";
-import LoadingIcon from "../icons/three-dots.svg";
+import BotIcon from "../icons/nextchat-bot.svg?react";
+import LoadingIcon from "../icons/three-dots.svg?react";
 
 import { getCSSVar, useMobileScreen } from "../utils";
 
@@ -30,6 +30,8 @@ import { type ClientApi, getClientApi } from "../client/api";
 import { useAccessStore } from "../store";
 import clsx from "clsx";
 import { initializeMcpSystem, isMcpEnabled } from "../mcp/actions";
+import { synchronizeChats } from "../utils/personal-sync";
+import { showToast } from "./ui-lib";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
@@ -236,26 +238,23 @@ export function useLoadData() {
 
 export function Home() {
   useSwitchTheme();
-  useLoadData();
   useHtmlLang();
+
+  useEffect(() => {
+    let reported = false;
+    const sync = () => { void synchronizeChats().then(() => { reported = false; }).catch(() => {
+      if (!reported) showToast("Chat sync is unavailable. Your local chats are retained and sync will retry.");
+      reported = true;
+    }); };
+    const timer = window.setInterval(sync, 15000);
+    sync();
+    return () => window.clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     console.log("[Config] got config from build time", getClientConfig());
     useAccessStore.getState().fetch();
 
-    const initMcp = async () => {
-      try {
-        const enabled = await isMcpEnabled();
-        if (enabled) {
-          console.log("[MCP] initializing...");
-          await initializeMcpSystem(useAccessStore.getState().accessCode);
-          console.log("[MCP] initialized");
-        }
-      } catch (err) {
-        console.error("[MCP] failed to initialize:", err);
-      }
-    };
-    initMcp();
   }, []);
 
   if (!useHasHydrated()) {

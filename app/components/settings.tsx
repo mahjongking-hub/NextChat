@@ -1,24 +1,25 @@
+import { PersonalProviders } from "./personal-providers";
 import { useState, useEffect, useMemo } from "react";
 
 import styles from "./settings.module.scss";
 
-import ResetIcon from "../icons/reload.svg";
-import AddIcon from "../icons/add.svg";
-import CloseIcon from "../icons/close.svg";
-import CopyIcon from "../icons/copy.svg";
-import ClearIcon from "../icons/clear.svg";
-import LoadingIcon from "../icons/three-dots.svg";
-import EditIcon from "../icons/edit.svg";
-import FireIcon from "../icons/fire.svg";
-import EyeIcon from "../icons/eye.svg";
-import DownloadIcon from "../icons/download.svg";
-import UploadIcon from "../icons/upload.svg";
-import ConfigIcon from "../icons/config.svg";
-import ConfirmIcon from "../icons/confirm.svg";
+import ResetIcon from "../icons/reload.svg?react";
+import AddIcon from "../icons/add.svg?react";
+import CloseIcon from "../icons/close.svg?react";
+import CopyIcon from "../icons/copy.svg?react";
+import ClearIcon from "../icons/clear.svg?react";
+import LoadingIcon from "../icons/three-dots.svg?react";
+import EditIcon from "../icons/edit.svg?react";
+import FireIcon from "../icons/fire.svg?react";
+import EyeIcon from "../icons/eye.svg?react";
+import DownloadIcon from "../icons/download.svg?react";
+import UploadIcon from "../icons/upload.svg?react";
+import ConfigIcon from "../icons/config.svg?react";
+import ConfirmIcon from "../icons/confirm.svg?react";
 
-import ConnectionIcon from "../icons/connection.svg";
-import CloudSuccessIcon from "../icons/cloud-success.svg";
-import CloudFailIcon from "../icons/cloud-fail.svg";
+import ConnectionIcon from "../icons/connection.svg?react";
+import CloudSuccessIcon from "../icons/cloud-success.svg?react";
+import CloudFailIcon from "../icons/cloud-fail.svg?react";
 import { trackSettingsPageGuideToCPaymentClick } from "../utils/auth-settings-events";
 import {
   Input,
@@ -266,14 +267,14 @@ function DangerItems() {
         />
       </ListItem>
       <ListItem
-        title={Locale.Settings.Danger.Clear.Title}
-        subTitle={Locale.Settings.Danger.Clear.SubTitle}
+        title="Clear this device"
+        subTitle="Clears local data. Synced chats remain in the cloud and will return after reload."
       >
         <IconButton
           aria={Locale.Settings.Danger.Clear.Title}
           text={Locale.Settings.Danger.Clear.Action}
           onClick={async () => {
-            if (await showConfirm(Locale.Settings.Danger.Clear.Confirm)) {
+            if (await showConfirm("Clear local data on this device? Synced chats remain in the cloud.")) {
               chatStore.clearAllData();
             }
           }}
@@ -1815,105 +1816,7 @@ export function Settings() {
           </ListItem>
         </List>
 
-        <List id={SlotID.CustomModel}>
-          {saasStartComponent}
-          {accessCodeComponent}
-
-          {!accessStore.hideUserApiKey && (
-            <>
-              {useCustomConfigComponent}
-
-              {accessStore.useCustomConfig && (
-                <>
-                  <ListItem
-                    title={Locale.Settings.Access.Provider.Title}
-                    subTitle={Locale.Settings.Access.Provider.SubTitle}
-                  >
-                    <Select
-                      aria-label={Locale.Settings.Access.Provider.Title}
-                      value={accessStore.provider}
-                      onChange={(e) => {
-                        accessStore.update(
-                          (access) =>
-                            (access.provider = e.target
-                              .value as ServiceProvider),
-                        );
-                      }}
-                    >
-                      {Object.entries(ServiceProvider).map(([k, v]) => (
-                        <option value={v} key={k}>
-                          {k}
-                        </option>
-                      ))}
-                    </Select>
-                  </ListItem>
-
-                  {openAIConfigComponent}
-                  {azureConfigComponent}
-                  {googleConfigComponent}
-                  {anthropicConfigComponent}
-                  {baiduConfigComponent}
-                  {byteDanceConfigComponent}
-                  {alibabaConfigComponent}
-                  {tencentConfigComponent}
-                  {moonshotConfigComponent}
-                  {deepseekConfigComponent}
-                  {stabilityConfigComponent}
-                  {lflytekConfigComponent}
-                  {XAIConfigComponent}
-                  {chatglmConfigComponent}
-                  {siliconflowConfigComponent}
-                  {ai302ConfigComponent}
-                </>
-              )}
-            </>
-          )}
-
-          {!shouldHideBalanceQuery && !clientConfig?.isApp ? (
-            <ListItem
-              title={Locale.Settings.Usage.Title}
-              subTitle={
-                showUsage
-                  ? loadingUsage
-                    ? Locale.Settings.Usage.IsChecking
-                    : Locale.Settings.Usage.SubTitle(
-                        usage?.used ?? "[?]",
-                        usage?.subscription ?? "[?]",
-                      )
-                  : Locale.Settings.Usage.NoAccess
-              }
-            >
-              {!showUsage || loadingUsage ? (
-                <div />
-              ) : (
-                <IconButton
-                  icon={<ResetIcon></ResetIcon>}
-                  text={Locale.Settings.Usage.Check}
-                  onClick={() => checkUsage(true)}
-                />
-              )}
-            </ListItem>
-          ) : null}
-
-          <ListItem
-            title={Locale.Settings.Access.CustomModel.Title}
-            subTitle={Locale.Settings.Access.CustomModel.SubTitle}
-            vertical={true}
-          >
-            <input
-              aria-label={Locale.Settings.Access.CustomModel.Title}
-              style={{ width: "100%", maxWidth: "unset", textAlign: "left" }}
-              type="text"
-              value={config.customModels}
-              placeholder="model1,model2,model3"
-              onChange={(e) =>
-                config.update(
-                  (config) => (config.customModels = e.currentTarget.value),
-                )
-              }
-            ></input>
-          </ListItem>
-        </List>
+        <PersonalProviders />
 
         <List>
           <ModelConfigList

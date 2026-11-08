@@ -4,9 +4,9 @@ import { IconButton } from "./button";
 import { EmojiAvatar } from "./emoji";
 import styles from "./new-chat.module.scss";
 
-import LeftIcon from "../icons/left.svg";
-import LightningIcon from "../icons/lightning.svg";
-import EyeIcon from "../icons/eye.svg";
+import LeftIcon from "../icons/left.svg?react";
+import LightningIcon from "../icons/lightning.svg?react";
+import EyeIcon from "../icons/eye.svg?react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { Mask, useMaskStore } from "../store/mask";

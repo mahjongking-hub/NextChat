@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { Path, SAAS_CHAT_URL } from "../constant";
 import { useAccessStore } from "../store";
 import Locale from "../locales";
-import Delete from "../icons/close.svg";
-import Arrow from "../icons/arrow.svg";
-import Logo from "../icons/logo.svg";
+import Delete from "../icons/close.svg?react";
+import Arrow from "../icons/arrow.svg?react";
+import Logo from "../icons/logo.svg?react";
 import { useMobileScreen } from "@/app/utils";
-import BotIcon from "../icons/nextchat-bot.svg";
+import BotIcon from "../icons/nextchat-bot.svg?react";
 import { getClientConfig } from "../config/client";
 import { PasswordInput } from "./ui-lib";
-import LeftIcon from "@/app/icons/left.svg";
+import LeftIcon from "@/app/icons/left.svg?react";
 import { safeLocalStorage } from "@/app/utils";
 import {
   trackSettingsPageGuideToCPaymentClick,

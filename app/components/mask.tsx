@@ -3,15 +3,15 @@ import { ErrorBoundary } from "./error";
 
 import styles from "./mask.module.scss";
 
-import DownloadIcon from "../icons/download.svg";
-import UploadIcon from "../icons/upload.svg";
-import EditIcon from "../icons/edit.svg";
-import AddIcon from "../icons/add.svg";
-import CloseIcon from "../icons/close.svg";
-import DeleteIcon from "../icons/delete.svg";
-import EyeIcon from "../icons/eye.svg";
-import CopyIcon from "../icons/copy.svg";
-import DragIcon from "../icons/drag.svg";
+import DownloadIcon from "../icons/download.svg?react";
+import UploadIcon from "../icons/upload.svg?react";
+import EditIcon from "../icons/edit.svg?react";
+import AddIcon from "../icons/add.svg?react";
+import CloseIcon from "../icons/close.svg?react";
+import DeleteIcon from "../icons/delete.svg?react";
+import EyeIcon from "../icons/eye.svg?react";
+import CopyIcon from "../icons/copy.svg?react";
+import DragIcon from "../icons/drag.svg?react";
 
 import { DEFAULT_MASK_AVATAR, Mask, useMaskStore } from "../store/mask";
 import {

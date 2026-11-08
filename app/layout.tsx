@@ -61,11 +61,6 @@ export default function RootLayout({
             <GoogleTagManager gtmId={serverConfig.gtmId} />
           </>
         )}
-        {serverConfig?.gaId && (
-          <>
-            <GoogleAnalytics gaId={serverConfig.gaId} />
-          </>
-        )}
       </body>
     </html>
   );
