@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "node:url";
 import { CN_MASKS } from "./cn";
 import { TW_MASKS } from "./tw";
 import { EN_MASKS } from "./en";
@@ -12,14 +13,9 @@ const BUILTIN_MASKS: Record<string, BuiltinMask[]> = {
   en: EN_MASKS,
 };
 
-const dirname = path.dirname(__filename);
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
-fs.writeFile(
+fs.writeFileSync(
   dirname + "/../../public/masks.json",
   JSON.stringify(BUILTIN_MASKS, null, 4),
-  function (error) {
-    if (error) {
-      console.error("[Build] failed to build masks", error);
-    }
-  },
 );

@@ -2,8 +2,8 @@
 
 import React from "react";
 import { IconButton } from "./button";
-import GithubIcon from "../icons/github.svg";
-import ResetIcon from "../icons/reload.svg";
+import GithubIcon from "../icons/github.svg?react";
+import ResetIcon from "../icons/reload.svg?react";
 import { ISSUE_URL } from "../constant";
 import Locale from "../locales";
 import { showConfirm } from "./ui-lib";

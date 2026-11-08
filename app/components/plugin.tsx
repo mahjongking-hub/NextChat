@@ -8,13 +8,13 @@ import { ErrorBoundary } from "./error";
 import styles from "./mask.module.scss";
 import pluginStyles from "./plugin.module.scss";
 
-import EditIcon from "../icons/edit.svg";
-import AddIcon from "../icons/add.svg";
-import CloseIcon from "../icons/close.svg";
-import DeleteIcon from "../icons/delete.svg";
-import ConfirmIcon from "../icons/confirm.svg";
-import ReloadIcon from "../icons/reload.svg";
-import GithubIcon from "../icons/github.svg";
+import EditIcon from "../icons/edit.svg?react";
+import AddIcon from "../icons/add.svg?react";
+import CloseIcon from "../icons/close.svg?react";
+import DeleteIcon from "../icons/delete.svg?react";
+import ConfirmIcon from "../icons/confirm.svg?react";
+import ReloadIcon from "../icons/reload.svg?react";
+import GithubIcon from "../icons/github.svg?react";
 
 import { Plugin, usePluginStore, FunctionToolService } from "../store/plugin";
 import {

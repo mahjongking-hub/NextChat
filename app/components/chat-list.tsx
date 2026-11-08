@@ -1,4 +1,4 @@
-import DeleteIcon from "../icons/delete.svg";
+import DeleteIcon from "../icons/delete.svg?react";
 
 import styles from "./home.module.scss";
 import {

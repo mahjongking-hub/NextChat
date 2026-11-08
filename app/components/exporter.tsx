@@ -19,12 +19,12 @@ import {
   useMobileScreen,
 } from "../utils";
 
-import CopyIcon from "../icons/copy.svg";
-import LoadingIcon from "../icons/three-dots.svg";
+import CopyIcon from "../icons/copy.svg?react";
+import LoadingIcon from "../icons/three-dots.svg?react";
 import NextChatIcon from "../icons/nextchat-bot.png";
-import ShareIcon from "../icons/share.svg";
+import ShareIcon from "../icons/share.svg?react";
 
-import DownloadIcon from "../icons/download.svg";
+import DownloadIcon from "../icons/download.svg?react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MessageSelector, useMessageSelector } from "./message-selector";
 import { Avatar } from "./emoji";

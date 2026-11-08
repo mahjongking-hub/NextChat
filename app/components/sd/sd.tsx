@@ -3,7 +3,7 @@ import styles from "@/app/components/sd/sd.module.scss";
 import homeStyles from "@/app/components/home.module.scss";
 
 import { IconButton } from "@/app/components/button";
-import ReturnIcon from "@/app/icons/return.svg";
+import ReturnIcon from "@/app/icons/return.svg?react";
 import Locale from "@/app/locales";
 import { Path } from "@/app/constant";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -14,18 +14,18 @@ import {
 } from "@/app/utils";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppConfig } from "@/app/store";
-import MinIcon from "@/app/icons/min.svg";
-import MaxIcon from "@/app/icons/max.svg";
+import MinIcon from "@/app/icons/min.svg?react";
+import MaxIcon from "@/app/icons/max.svg?react";
 import { getClientConfig } from "@/app/config/client";
 import { ChatAction } from "@/app/components/chat";
-import DeleteIcon from "@/app/icons/clear.svg";
-import CopyIcon from "@/app/icons/copy.svg";
-import PromptIcon from "@/app/icons/prompt.svg";
-import ResetIcon from "@/app/icons/reload.svg";
+import DeleteIcon from "@/app/icons/clear.svg?react";
+import CopyIcon from "@/app/icons/copy.svg?react";
+import PromptIcon from "@/app/icons/prompt.svg?react";
+import ResetIcon from "@/app/icons/reload.svg?react";
 import { useSdStore } from "@/app/store/sd";
-import LoadingIcon from "@/app/icons/three-dots.svg";
-import ErrorIcon from "@/app/icons/delete.svg";
-import SDIcon from "@/app/icons/sd.svg";
+import LoadingIcon from "@/app/icons/three-dots.svg?react";
+import ErrorIcon from "@/app/icons/delete.svg?react";
+import SDIcon from "@/app/icons/sd.svg?react";
 import { Property } from "csstype";
 import {
   showConfirm,

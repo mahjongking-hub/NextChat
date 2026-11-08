@@ -3,8 +3,8 @@ import { ErrorBoundary } from "./error";
 import styles from "./mask.module.scss";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "./button";
-import CloseIcon from "../icons/close.svg";
-import EyeIcon from "../icons/eye.svg";
+import CloseIcon from "../icons/close.svg?react";
+import EyeIcon from "../icons/eye.svg?react";
 import Locale from "../locales";
 import { Path } from "../constant";
 

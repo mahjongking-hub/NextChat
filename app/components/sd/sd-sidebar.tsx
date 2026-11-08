@@ -1,8 +1,8 @@
 import { IconButton } from "@/app/components/button";
-import GithubIcon from "@/app/icons/github.svg";
-import SDIcon from "@/app/icons/sd.svg";
-import ReturnIcon from "@/app/icons/return.svg";
-import HistoryIcon from "@/app/icons/history.svg";
+import GithubIcon from "@/app/icons/github.svg?react";
+import SDIcon from "@/app/icons/sd.svg?react";
+import ReturnIcon from "@/app/icons/return.svg?react";
+import HistoryIcon from "@/app/icons/history.svg?react";
 import Locale from "@/app/locales";
 
 import { Path, REPO_URL } from "@/app/constant";

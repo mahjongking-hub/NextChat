@@ -1,6 +1,6 @@
-import VoiceIcon from "@/app/icons/voice.svg";
-import VoiceOffIcon from "@/app/icons/voice-off.svg";
-import PowerIcon from "@/app/icons/power.svg";
+import VoiceIcon from "@/app/icons/voice.svg?react";
+import VoiceOffIcon from "@/app/icons/voice-off.svg?react";
+import PowerIcon from "@/app/icons/power.svg?react";
 
 import styles from "./realtime-chat.module.scss";
 import clsx from "clsx";

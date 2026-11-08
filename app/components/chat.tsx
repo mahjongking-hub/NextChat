@@ -9,45 +9,45 @@ import React, {
   useState,
 } from "react";
 
-import SendWhiteIcon from "../icons/send-white.svg";
-import BrainIcon from "../icons/brain.svg";
-import RenameIcon from "../icons/rename.svg";
-import EditIcon from "../icons/rename.svg";
-import ExportIcon from "../icons/share.svg";
-import ReturnIcon from "../icons/return.svg";
-import CopyIcon from "../icons/copy.svg";
-import SpeakIcon from "../icons/speak.svg";
-import SpeakStopIcon from "../icons/speak-stop.svg";
-import LoadingIcon from "../icons/three-dots.svg";
-import LoadingButtonIcon from "../icons/loading.svg";
-import PromptIcon from "../icons/prompt.svg";
-import MaskIcon from "../icons/mask.svg";
-import MaxIcon from "../icons/max.svg";
-import MinIcon from "../icons/min.svg";
-import ResetIcon from "../icons/reload.svg";
-import ReloadIcon from "../icons/reload.svg";
-import BreakIcon from "../icons/break.svg";
-import SettingsIcon from "../icons/chat-settings.svg";
-import DeleteIcon from "../icons/clear.svg";
-import PinIcon from "../icons/pin.svg";
-import ConfirmIcon from "../icons/confirm.svg";
-import CloseIcon from "../icons/close.svg";
-import CancelIcon from "../icons/cancel.svg";
-import ImageIcon from "../icons/image.svg";
+import SendWhiteIcon from "../icons/send-white.svg?react";
+import BrainIcon from "../icons/brain.svg?react";
+import RenameIcon from "../icons/rename.svg?react";
+import EditIcon from "../icons/rename.svg?react";
+import ExportIcon from "../icons/share.svg?react";
+import ReturnIcon from "../icons/return.svg?react";
+import CopyIcon from "../icons/copy.svg?react";
+import SpeakIcon from "../icons/speak.svg?react";
+import SpeakStopIcon from "../icons/speak-stop.svg?react";
+import LoadingIcon from "../icons/three-dots.svg?react";
+import LoadingButtonIcon from "../icons/loading.svg?react";
+import PromptIcon from "../icons/prompt.svg?react";
+import MaskIcon from "../icons/mask.svg?react";
+import MaxIcon from "../icons/max.svg?react";
+import MinIcon from "../icons/min.svg?react";
+import ResetIcon from "../icons/reload.svg?react";
+import ReloadIcon from "../icons/reload.svg?react";
+import BreakIcon from "../icons/break.svg?react";
+import SettingsIcon from "../icons/chat-settings.svg?react";
+import DeleteIcon from "../icons/clear.svg?react";
+import PinIcon from "../icons/pin.svg?react";
+import ConfirmIcon from "../icons/confirm.svg?react";
+import CloseIcon from "../icons/close.svg?react";
+import CancelIcon from "../icons/cancel.svg?react";
+import ImageIcon from "../icons/image.svg?react";
 
-import LightIcon from "../icons/light.svg";
-import DarkIcon from "../icons/dark.svg";
-import AutoIcon from "../icons/auto.svg";
-import BottomIcon from "../icons/bottom.svg";
-import StopIcon from "../icons/pause.svg";
-import RobotIcon from "../icons/robot.svg";
-import SizeIcon from "../icons/size.svg";
-import QualityIcon from "../icons/hd.svg";
-import StyleIcon from "../icons/palette.svg";
-import PluginIcon from "../icons/plugin.svg";
-import ShortcutkeyIcon from "../icons/shortcutkey.svg";
-import McpToolIcon from "../icons/tool.svg";
-import HeadphoneIcon from "../icons/headphone.svg";
+import LightIcon from "../icons/light.svg?react";
+import DarkIcon from "../icons/dark.svg?react";
+import AutoIcon from "../icons/auto.svg?react";
+import BottomIcon from "../icons/bottom.svg?react";
+import StopIcon from "../icons/pause.svg?react";
+import RobotIcon from "../icons/robot.svg?react";
+import SizeIcon from "../icons/size.svg?react";
+import QualityIcon from "../icons/hd.svg?react";
+import StyleIcon from "../icons/palette.svg?react";
+import PluginIcon from "../icons/plugin.svg?react";
+import ShortcutkeyIcon from "../icons/shortcutkey.svg?react";
+import McpToolIcon from "../icons/tool.svg?react";
+import HeadphoneIcon from "../icons/headphone.svg?react";
 import {
   BOT_HELLO,
   ChatMessage,
@@ -580,7 +580,7 @@ export function ChatActions(props: {
 
     // if current model is not available
     // switch to first available model
-    const isUnavailableModel = !models.some((m) => m.name === currentModel);
+    const isUnavailableModel = !models.some((m) => m.name === currentModel && m.provider.providerName === currentProviderName);
     if (isUnavailableModel && models.length > 0) {
       // show next model to default model if exist
       let nextModel = models.find((model) => model.isDefault) || models[0];
@@ -684,11 +684,7 @@ export function ChatActions(props: {
           <Selector
             defaultSelectedValue={`${currentModel}@${currentProviderName}`}
             items={models.map((m) => ({
-              title: `${m.displayName}${
-                m?.provider?.providerName
-                  ? " (" + m?.provider?.providerName + ")"
-                  : ""
-              }`,
+              title: m.displayName,
               value: `${m.name}@${m?.provider?.providerName}`,
             }))}
             onClose={() => setShowModelSelector(false)}
@@ -1340,9 +1336,7 @@ function _Chat() {
     session.messages.at(0)?.content !== BOT_HELLO.content
   ) {
     const copiedHello = Object.assign({}, BOT_HELLO);
-    if (!accessStore.isAuthorized()) {
-      copiedHello.content = Locale.Error.Unauthorized;
-    }
+    copiedHello.content = "Add an OpenAI-compatible provider in Settings, enable a model, then start chatting.";
     context.push(copiedHello);
   }
 
